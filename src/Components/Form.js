@@ -7,8 +7,10 @@ function Form({todos,setTodos,inputText,setInputText, setStatus}){
 
   const submitTodoHandler = (e) => {
     e.preventDefault();
+    if(inputText!==""){
     setTodos([...todos, {text : inputText, completed : false, id : Math.random()*1000}]);
     setInputText("");
+    }
   }
 
   const statusHandler = (e) => {
@@ -21,6 +23,7 @@ function Form({todos,setTodos,inputText,setInputText, setStatus}){
      onChange={inputTextHandler} 
      type="text" 
      className="todo-input" 
+     required
      />
     <button className="todo-button" onClick={submitTodoHandler} type="submit">
       <i className="fas fa-plus-square"></i>
